@@ -1,0 +1,6 @@
+# compiled programs
+/textool
+/textool.exe
+/main
+*.o
+.DS_Store

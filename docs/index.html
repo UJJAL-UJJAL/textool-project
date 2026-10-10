@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Intelligent Text Compression and Summarization Tool</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <h1>Intelligent Text Compression and Summarization Tool</h1>
+    <p class="intro">
+      Paste some text. The tool shortens repeated characters (run-length encoding)
+      and picks up to two sentences as a summary. The work is done by C++ code
+      running in your browser as WebAssembly.
+    </p>
+
+    <label for="input">Your text</label>
+    <textarea id="input" rows="8" placeholder="Type or paste your text here..."></textarea>
+
+    <div class="buttons">
+      <button id="run" type="button" disabled>Compress and summarize</button>
+      <button id="sample" type="button" class="secondary">Use sample text</button>
+      <button id="clear" type="button" class="secondary">Clear</button>
+    </div>
+
+    <p id="status" role="status">Loading the C++ code...</p>
+    <p id="error" role="alert" hidden></p>
+
+    <section id="results" hidden>
+      <h2>Compressed text</h2>
+      <pre id="compressed"></pre>
+
+      <h2>Size</h2>
+      <dl class="stats">
+        <div><dt>Original</dt><dd><span id="original"></span> characters</dd></div>
+        <div><dt>Compressed</dt><dd><span id="compressedLength"></span> characters</dd></div>
+        <div><dt>Space saved</dt><dd><span id="saved"></span>%</dd></div>
+      </dl>
+
+      <h2>Summary (up to 2 sentences)</h2>
+      <p id="summary"></p>
+    </section>
+
+    <footer>
+      <p>
+        Compression and summarization are written in C++ (<code>core.cpp</code>)
+        and compiled to WebAssembly. This page only collects the text and shows the result.
+      </p>
+    </footer>
+  </main>
+
+  <script src="textool.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
